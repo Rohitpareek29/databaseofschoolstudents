@@ -1,0 +1,64 @@
+class SchoolAttendanceSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, student_name):
+        if student_name not in self.students:
+            self.students[student_name] = {"attendance": 0}
+            print(f"Student {student_name} added to the system.")
+
+    def mark_attendance(self, student_name):
+        if student_name in self.students:
+            self.students[student_name]["attendance"] += 1
+            print(f"Attendance marked for {student_name}. Total attendance: {self.students[student_name]['attendance']}")
+        else:
+            print(f"{student_name} is not found in the system.")
+
+    def show_attendance(self, student_name):
+        if student_name in self.students:
+            print(f"{student_name} has attended {self.students[student_name]['attendance']} times.")
+        else:
+            print(f"{student_name} is not found in the system.")
+
+    def list_students(self):
+        print("List of students:")
+        for student in self.students:
+            print(student)
+
+def main():
+    attendance_system = SchoolAttendanceSystem()
+
+    while True:
+        print("\nMenu:")
+        print("1. Add Student")
+        print("2. Mark Attendance")
+        print("3. Show Attendance")
+        print("4. List Students")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            student_name = input("Enter student name: ")
+            attendance_system.add_student(student_name)
+
+        elif choice == "2":
+            student_name = input("Enter student name: ")
+            attendance_system.mark_attendance(student_name)
+
+        elif choice == "3":
+            student_name = input("Enter student name: ")
+            attendance_system.show_attendance(student_name)
+
+        elif choice == "4":
+            attendance_system.list_students()
+
+        elif choice == "5":
+            print("Exiting the program.")
+            break
+
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+if __name__ == "__main__":
+    main()
